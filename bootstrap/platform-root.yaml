@@ -1,0 +1,24 @@
+# Bootstrap entry point for this cluster.
+# It recursively discovers and manages the AppProject and child Applications in apps/.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: platform-root
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: platform
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/tanish120704/local-cluster.git
+    targetRevision: main
+    path: apps
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

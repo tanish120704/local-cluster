@@ -1,0 +1,9 @@
+# Local platform-learning cluster: 1 control-plane + 3 workers.
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: platform-lab
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+  - role: worker

@@ -1,0 +1,8 @@
+# Local kind-cluster overrides for the official argo/argo-cd Helm chart.
+# Argo CD is kept private; access it locally with kubectl port-forward.
+crds:
+  install: true
+
+server:
+  service:
+    type: ClusterIP

@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: platform
+  namespace: argocd
+spec:
+  description: Platform controllers managed through Argo CD in the local lab.
+  sourceRepos:
+    - https://charts.crossplane.io/stable
+  destinations:
+    - namespace: crossplane-system
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
